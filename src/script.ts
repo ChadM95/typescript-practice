@@ -1,16 +1,15 @@
-const header = document.getElementById('header');
-const button = document.getElementById('button');
-const input = document.getElementById('input') as HTMLInputElement | null;
+const p = new Promise( (res, rej) => {
 
-button?.addEventListener('click', (e) => {
+    let success = true;
+    if(success)
+        res("successful!");
+    else 
+        rej("failed");
 
-    console.log(e);
+})
 
-    if(input?.value && header)
-        header.textContent = 'you entered ' + input.value;
-
-    else if (header)
-        header.textContent = 'please enter a value';
-
-
-});
+p.then( result => {
+    console.log(result);
+}).catch(error => {
+    console.error(error);
+})
