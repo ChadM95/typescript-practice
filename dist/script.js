@@ -1,14 +1,6 @@
-const p = new Promise((res, rej) => {
-    let success = !true;
-    if (success)
-        res("successful!");
-    else
-        rej("failed");
-});
-p.then(result => {
-    console.log(result);
-}).catch(error => {
-    console.error(error);
-});
+const myHandler = () => {
+    console.log("timeout complete");
+};
+setTimeout(myHandler, 2000);
 export {};
 //# sourceMappingURL=script.js.map
