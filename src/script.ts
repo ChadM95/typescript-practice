@@ -1,10 +1,22 @@
-//practice using a callback
+//async .. await
 
-function sayHello(name: string, callback: () => void) {
-    console.log("hi, " + name);
-    callback();
+let myPromise = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Yay, I resolved!')
+    }, 1000);
+  });
 }
 
-sayHello("chad", () => {
-    console.log("callback!");
-});
+async function noAwait() {
+    let value = myPromise();
+    console.log(value);
+}
+
+async function yesAwait() {
+    let value = await myPromise();
+    console.log(value);
+}
+
+noAwait();
+yesAwait();
