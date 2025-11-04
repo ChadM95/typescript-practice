@@ -1,6 +1,10 @@
+//practice using a callback
 
-const myHandler = () => {
-    console.log("timeout complete");
+function sayHello(name: string, callback: () => void) {
+    console.log("hi, " + name);
+    callback();
 }
 
-setTimeout(myHandler, 2000);
+sayHello("chad", () => {
+    console.log("callback!");
+});
