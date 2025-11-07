@@ -1,19 +1,26 @@
 //fetch
 
-let endpointUrl = 'https://google.com';
+console.log("program started");
 
-fetch(endpointUrl)
-  .then(response => {
-        if (response.ok) {
-          return response.json(); 
-        }
-        throw new Error('Request failed!'); 
+const button = document.getElementById('button');
+const paragraph = document.getElementById('paragraph');
+
+button?.addEventListener('click', e=> {
+  console.log("button clicked");
+  buttonClick();
+})
+
+function buttonClick() { 
+  fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(res => res.json())
+  .then(data => {
+    if (paragraph)
+      paragraph.textContent = JSON.stringify(data);
+      console.log("response : " + data);
   })
-  .then(jsonResponse => {
-        //handle json here 
-        console.log(jsonResponse); 
-  })
-  .catch(networkError => {
-        // Handle errors
-        console.error(networkError.message);
+  .catch(error => {
+    if(paragraph)  
+    paragraph.textContent = error;
+    console.log(error);
   });
+}
