@@ -1,26 +1,28 @@
-//fetch
+const button = document.querySelector('#button');
+const paragraph = document.querySelector('#paragraph');
+const apiUrl = 'https://jsonplaceholder.typicode.com/'
+let num: number = 1;
 
-console.log("program started");
-
-const button = document.getElementById('button');
-const paragraph = document.getElementById('paragraph');
-
-button?.addEventListener('click', e=> {
+button?.addEventListener('click', e => {
   console.log("button clicked");
   buttonClick();
-})
+});
 
-function buttonClick() { 
-  fetch('https://jsonplaceholder.typicode.com/todos/1')
-  .then(res => res.json())
-  .then(data => {
-    if (paragraph)
-      paragraph.textContent = JSON.stringify(data);
-      console.log("response : " + data);
-  })
-  .catch(error => {
-    if(paragraph)  
+function buttonClick() {
+
+  fetch(apiUrl + 'posts/' + num).then(res => {
+    if(res.ok) {
+      num++;
+      console.log("num : " + num)
+      return res.json();
+    }
+    throw new Error('bad request');
+  }).then(data => {
+    if(paragraph)
+    paragraph.textContent = JSON.stringify(data);
+  }).catch(error => {
+    if(paragraph)
     paragraph.textContent = error;
-    console.log(error);
-  });
-}
+  })
+
+};
