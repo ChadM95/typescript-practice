@@ -1,22 +1,19 @@
-//async .. await
+//fetch
 
-let myPromise = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('Yay, I resolved!')
-    }, 1000);
+let endpointUrl = 'https://google.com';
+
+fetch(endpointUrl)
+  .then(response => {
+        if (response.ok) {
+          return response.json(); 
+        }
+        throw new Error('Request failed!'); 
+  })
+  .then(jsonResponse => {
+        //handle json here 
+        console.log(jsonResponse); 
+  })
+  .catch(networkError => {
+        // Handle errors
+        console.error(networkError.message);
   });
-}
-
-async function noAwait() {
-    let value = myPromise();
-    console.log(value);
-}
-
-async function yesAwait() {
-    let value = await myPromise();
-    console.log(value);
-}
-
-noAwait();
-yesAwait();
