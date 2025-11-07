@@ -1,5 +1,5 @@
 const button = document.querySelector('#button');
-const paragraph = document.querySelector('#paragraph');
+const output = document.querySelector('#output');
 const apiUrl = 'https://jsonplaceholder.typicode.com/';
 let num = 1;
 button === null || button === void 0 ? void 0 : button.addEventListener('click', e => {
@@ -15,11 +15,11 @@ function buttonClick() {
         }
         throw new Error('bad request');
     }).then(data => {
-        if (paragraph)
-            paragraph.textContent = JSON.stringify(data);
+        if (output)
+            output.textContent = JSON.stringify(data);
     }).catch(error => {
-        if (paragraph)
-            paragraph.textContent = error;
+        if (output)
+            output.textContent = error;
     });
 }
 ;
