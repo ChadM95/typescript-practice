@@ -1,0 +1,19 @@
+[
+    {
+        "name": "Ireland",
+        "population": 5380000,
+        "capitalCity": "Dublin"
+    },
+
+    {
+        "name": "Japan",
+        "population": 124000000,
+        "capitalCity": "Tokyo"  
+    },
+
+    {
+        "name": "Canada",
+        "population": 41290000,
+        "capitalCity": "Ottawa" 
+    }
+]

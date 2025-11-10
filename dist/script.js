@@ -3,6 +3,7 @@ const output = document.querySelector('.output');
 const input = document.querySelector('#input');
 let inputValue;
 const apiUrl = 'https://jsonplaceholder.typicode.com/posts/';
+const countries = "./countries.json";
 button === null || button === void 0 ? void 0 : button.addEventListener('click', e => {
     console.log("button clicked");
     if (input) {
@@ -12,36 +13,22 @@ button === null || button === void 0 ? void 0 : button.addEventListener('click',
     buttonClick();
 });
 function buttonClick() {
-    if (inputValue < 1 || !inputValue) {
-        fetch(apiUrl).then(res => {
-            if (res.ok) {
-                console.log("response OK");
-                return res.json();
-            }
-            throw new Error('bad request');
-        }).then(data => {
-            if (output)
-                output.textContent = JSON.stringify(data);
-        }).catch(error => {
-            if (output)
-                output.textContent = error;
-        });
-    }
-    else if (inputValue > 0) {
-        fetch(apiUrl + inputValue).then(res => {
-            if (res.ok) {
-                console.log("response OK");
-                return res.json();
-            }
-            throw new Error('bad request');
-        }).then(data => {
-            if (output)
-                output.textContent = JSON.stringify(data);
-        }).catch(error => {
-            if (output)
-                output.textContent = error;
-        });
-    }
+    fetch('./countries.json')
+        .then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+        throw new Error('error while fetching');
+    })
+        .then(data => {
+        if (output)
+            output.textContent = JSON.stringify(data);
+    })
+        .catch(error => {
+        if (output) {
+            output.textContent = error;
+        }
+    });
 }
 export {};
 //# sourceMappingURL=script.js.map
