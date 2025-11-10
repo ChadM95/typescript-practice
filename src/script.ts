@@ -25,8 +25,13 @@ function buttonClick() {
       throw new Error('error while fetching');
     })
     .then(data => {
-      if(output)
-      output.textContent = JSON.stringify(data);
+      
+      const list = document.getElementById('countries-list');
+      data.forEach((country: { name: string, population: number, capitalCity: string }) => {
+        const li = document.createElement('li');
+        li.textContent = country.name + " " + country.population/1000000 + "m " + country.capitalCity;
+        list?.appendChild(li);
+      })
     })
     .catch(error => {
       if (output) {
