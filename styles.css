@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-color: #e76f61;
+    background-color: rgb(231, 111, 97);
     margin: 5px;
     border: 1px solid black;
     min-height: 95vh;
@@ -31,7 +31,7 @@ body {
 }
 
 input {
-    background-color: #e76f61;
+    background-color: rgb(231, 111, 97);
     color: white;
     padding: 8px;
     width: 200px;
@@ -43,14 +43,14 @@ input {
 }
 
 input:focus {
-    background-color: #e76f61;
+    background-color: rgb(231, 111, 97);
     color: white;
 }
 
 
 button {
     background-color: #1c1f36;
-    color: #e76f61;
+    color: rgb(231, 111, 97);
     border: 1px solid grey;
     padding: 8px 16px;
     margin-bottom: 30px;

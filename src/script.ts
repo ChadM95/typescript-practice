@@ -1,19 +1,21 @@
 const button = document.querySelector('#button');
 const output = document.querySelector('.output');
 const input = document.querySelector<HTMLInputElement>('#input');
-let inputValue: number;
+const colourButton = document.querySelector("#colourButton");
 
 const apiUrl = 'https://jsonplaceholder.typicode.com/posts/';
 const countries = "./countries.json";
 
 button?.addEventListener('click', e => {
   console.log("button clicked");
-  if (input) {
-    inputValue = Number(input.value);
-    console.log('input value = ' + inputValue);
-  }
+
   buttonClick();
 });
+
+colourButton?.addEventListener('click', e => {
+  console.log("colour button clicked");
+  colourButtonClick();
+})
 
 function buttonClick() {
 
@@ -39,4 +41,38 @@ function buttonClick() {
       }
     })
 
+}
+
+function colourButtonClick() {
+  const container = document.querySelector('.container') as HTMLElement|null ;
+
+  console.log('entered colourButtonClick() function');
+  console.log('current style = ' + container?.style.backgroundColor);
+
+  if(container && input) {
+
+    let currentColour = getComputedStyle(container).backgroundColor;
+
+    switch(currentColour) {
+
+    case "rgb(231, 111, 97)" :
+      container.style.backgroundColor = "rgb(39, 142, 211)";
+      input.style.backgroundColor = "rgb(39, 142, 211)";
+      console.log('changed from red to blue');
+      break;
+
+    case "rgb(39, 142, 211)" :
+      container.style.backgroundColor = "green";
+      console.log('changed from blue to green');
+      input.style.backgroundColor = "green";
+      break;
+
+    case "rgb(0, 128, 0)" :
+      container.style.backgroundColor = "rgb(231, 111, 97)";
+      console.log('changed from green to red');
+      input.style.backgroundColor = "rgb(231, 111, 97)";
+      break;
+      
+    }
+  }
 }
